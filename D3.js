@@ -245,9 +245,34 @@ console.log('Numero elementi di charactersNames dopo della modifica: ', characte
 
 const randomCharacter = starWarsCharacters[Math.floor(Math.random() * starWarsCharacters.length)]
 
-console.log(
-	randomCharacter.eye_color,
-	randomCharacter.gender,
-	randomCharacter.name,
-	randomCharacter.skin_color
-)
+let preposition = 'He'
+let bornCreatedString = 'was born in '
+if (randomCharacter.gender === 'female') {
+	preposition = 'She'
+} else if (randomCharacter.gender === 'robot') {
+	preposition = 'It'
+	bornCreatedString = 'was created in '
+}
+let description =
+	randomCharacter.name +
+	(randomCharacter.birth_year !== 'unknown'
+		? ' ' + bornCreatedString + randomCharacter.birth_year
+		: '') +
+	', ' +
+	preposition.toLocaleLowerCase() +
+	' is a ' +
+	randomCharacter.gender +
+	' who is ' +
+	randomCharacter.skin_color +
+	' skinned and ' +
+	randomCharacter.eye_color +
+	' eyed. '
+description +=
+	preposition +
+	' has a mass of ' +
+	randomCharacter.mass +
+	' kg and a height of ' +
+	randomCharacter.height +
+	' cm.'
+
+console.log(description)
